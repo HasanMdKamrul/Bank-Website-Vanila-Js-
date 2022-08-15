@@ -5,13 +5,33 @@ document.getElementById('deposit-button').addEventListener('click', function(){
     // console.log('Deposit button clicked')
     // ** here we'll grab the value from the Amount input field
    
-    const depositField = document.getElementById('deposite');
-    const deposit = depositField.value;
+    const newAmountField = document.getElementById('deposite');
+    const newAmountString = newAmountField.value;
+    const newAmount = parseFloat(newAmountString);
 
-    const depositTotalElement = document.getElementById('deposite-total');
-    const depositTotal = depositTotalElement.innerText;
+    const previousDepositAmountField = document.getElementById('deposite-total');
+    const previousAmountString = previousDepositAmountField.innerText;
+    const previousAmount = parseFloat(previousAmountString);
 
-    depositTotalElement.innerText = deposit;
+    const totalDisplayAmount = newAmount + previousAmount;
 
+    previousDepositAmountField.innerText = totalDisplayAmount;
+
+    // Grab the balance field and innerText
+
+    const balanceAmountField = document.getElementById('balance-display');
+    const balanceAmountString = balanceAmountField.innerText;
+    const PreviousbalanceAmount = parseFloat(balanceAmountString);
+
+    // New total balance amount
+
+    const totalBalance = PreviousbalanceAmount + newAmount;
+
+    balanceAmountField.innerText = totalBalance;
+
+
+    // Value clear
+
+    newAmountField.value = '';
     
 })
